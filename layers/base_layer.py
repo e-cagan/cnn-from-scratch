@@ -4,6 +4,7 @@ Module for base abstract class and methods for layers.
 
 from abc import ABC, abstractmethod
 
+
 # Define the base layer class
 class BaseLayer(ABC):
     """
