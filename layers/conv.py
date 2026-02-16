@@ -124,5 +124,8 @@ class ConvLayer(BaseLayer):
         }
 
     def set_params(self, params):
-        self.weights = params["W"]
-        self.biases = params["b"]
+        # Check if key exists before setting it
+        if "W" in params:
+            self.weights = params["W"]
+        if "b" in params:
+            self.biases = params["b"]
