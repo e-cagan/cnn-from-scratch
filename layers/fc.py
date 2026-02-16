@@ -3,7 +3,7 @@ Module for fully connected layer.
 """
 
 import numpy as np
-from base_layer import BaseLayer
+from .base_layer import BaseLayer
 
 
 # Define the fully connected layer
@@ -50,6 +50,9 @@ class FCLayer(BaseLayer):
         }
 
     def set_params(self, params):
-        self.weights = params["W"]
-        self.biases = params["b"]
+        # Check if key exists before setting it
+        if "W" in params:
+            self.weights = params["W"]
+        if "b" in params:
+            self.biases = params["b"]
     

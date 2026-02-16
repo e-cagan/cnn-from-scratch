@@ -3,7 +3,7 @@ Module for MaxPool layer.
 """
 
 import numpy as np
-from base_layer import BaseLayer
+from .base_layer import BaseLayer
 
 
 # Define a class for maxpool layer

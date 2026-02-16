@@ -3,7 +3,7 @@ Module for Rectified Linear Unit (ReLU) activation function.
 """
 
 import numpy as np
-from base_layer import BaseLayer
+from .base_layer import BaseLayer
 
 
 # Define a class for ReLU activation

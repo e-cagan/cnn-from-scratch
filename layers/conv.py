@@ -3,7 +3,7 @@ Module for convolution layer.
 """
 
 import numpy as np
-from base_layer import BaseLayer
+from .base_layer import BaseLayer
 
 
 class ConvLayer(BaseLayer):
