@@ -7,6 +7,7 @@ from .base_model import BaseModel
 
 # Import layers
 from layers.conv import ConvLayer
+from layers.conv_vec import ConvLayerVec
 from layers.fc import FCLayer
 from layers.flatten import Flatten
 from layers.maxpool import MaxPool
@@ -25,12 +26,12 @@ class CNNModel(BaseModel):
         
         # Add layers to model
         # First convolutional layer pattern with ReLU activation
-        self.add_layer(ConvLayer(in_channels=1, out_channels=32, kernel_size=5, padding=2))
+        self.add_layer(ConvLayerVec(in_channels=1, out_channels=32, kernel_size=5, padding=2))
         self.add_layer(ReLU())
         self.add_layer(MaxPool(pool_size=2, stride=2))
         
         # Second convolutional layer pattern with ReLU activation
-        self.add_layer(ConvLayer(in_channels=32, out_channels=64, kernel_size=5, padding=2))
+        self.add_layer(ConvLayerVec(in_channels=32, out_channels=64, kernel_size=5, padding=2))
         self.add_layer(ReLU())
         self.add_layer(MaxPool(pool_size=2, stride=2))
 

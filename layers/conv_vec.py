@@ -66,7 +66,7 @@ def col2img(col, output_shape, kernel_size, stride, padding):
 
 class ConvLayerVec(BaseLayer):
     """
-    A class for convolution layer.
+    A class for vectorized convolution layer.
     """
 
     def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0):
@@ -130,6 +130,7 @@ class ConvLayerVec(BaseLayer):
         padded_x = self.cache["col"]
         x_shape = self.cache["x_shape"]
         W_col = self.cache["W_col"]
+        dX = None
 
         # Reshape the output dimension
         batch, out_channels, out_H, out_W = dout.shape
