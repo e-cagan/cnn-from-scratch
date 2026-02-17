@@ -42,21 +42,24 @@ class Adam(BaseOptim):
             value = params[key]["value"]
             grad = params[key]["grad"]
 
+            # Assign every layer a unique id
+            layer_id = id(layer)
+
             # Check if the key exists within velocities dict or not
-            if key not in self.m:
-                self.m[key] = np.zeros_like(value)
-                self.v[key] = np.zeros_like(value)
+            if (layer_id, key) not in self.m:
+                self.m[(layer_id, key)] = np.zeros_like(value)
+                self.v[(layer_id, key)] = np.zeros_like(value)
 
             # Apply adam formula
             # First moment update
-            self.m[key] = self.beta1 * self.m[key] + (1 - self.beta1) * grad
+            self.m[(layer_id, key)] = self.beta1 * self.m[(layer_id, key)] + (1 - self.beta1) * grad
 
             # Second moment update
-            self.v[key] = self.beta2 * self.v[key] + (1 - self.beta2) * grad ** 2
+            self.v[(layer_id, key)] = self.beta2 * self.v[(layer_id, key)] + (1 - self.beta2) * grad ** 2
 
             # Bias correction
-            m_hat = self.m[key] / (1 - self.beta1 ** self.t)
-            v_hat = self.v[key] / (1 - self.beta2 ** self.t)
+            m_hat = self.m[(layer_id, key)] / (1 - self.beta1 ** self.t)
+            v_hat = self.v[(layer_id, key)] / (1 - self.beta2 ** self.t)
 
             # Update weights
             new_value = value - self.learning_rate * m_hat / (np.sqrt(v_hat) + self.epsilon)

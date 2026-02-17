@@ -35,13 +35,16 @@ class SGDMomentum(BaseOptim):
             value = params[key]["value"]
             grad = params[key]["grad"]
 
+            # Assign every layer a unique id
+            layer_id = id(layer)
+
             # Check if the key exists within velocities dict or not
-            if key not in self.velocities:
-                self.velocities[key] = np.zeros_like(value)
+            if (layer_id, key) not in self.velocities:
+                self.velocities[(layer_id, key)] = np.zeros_like(value)
 
             # Apply SGD + momentum formula
-            self.velocities[key] = self.momentum * self.velocities[key] - self.learning_rate * grad
-            new_value = value + self.velocities[key]
+            self.velocities[(layer_id, key)] = self.momentum * self.velocities[(layer_id, key)] - self.learning_rate * grad
+            new_value = value + self.velocities[(layer_id, key)]
 
             # Write it back on params
             layer.set_params({key: new_value})

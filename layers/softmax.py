@@ -28,6 +28,9 @@ class Softmax(BaseLayer):
         shifted_x = x - np.max(x, axis=1, keepdims=True)
         exp = np.exp(shifted_x)
         probs = exp / np.sum(exp, axis=1, keepdims=True)
+        
+        # Clip the probabilities to avoid division by zero error
+        probs = np.clip(probs, 1e-10, 1.0)
 
         # Turn labels to one hot encoded matrix to calculate cross entropy loss
         y = np.eye(num_classes)[labels]                # One-hot encoded matrix
