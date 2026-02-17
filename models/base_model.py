@@ -25,7 +25,7 @@ class BaseModel(ABC):
         pass
     
     @abstractmethod
-    def backward(self, dout):
+    def backward(self):
         """
         Backward propagation method for models.
         """
