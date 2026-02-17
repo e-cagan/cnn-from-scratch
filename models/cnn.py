@@ -11,6 +11,7 @@ from layers.conv_vec import ConvLayerVec
 from layers.fc import FCLayer
 from layers.flatten import Flatten
 from layers.maxpool import MaxPool
+from layers.maxpool_vec import MaxPoolVec
 from layers.relu import ReLU
 from layers.softmax import Softmax
 
@@ -28,12 +29,12 @@ class CNNModel(BaseModel):
         # First convolutional layer pattern with ReLU activation
         self.add_layer(ConvLayerVec(in_channels=1, out_channels=32, kernel_size=5, padding=2))
         self.add_layer(ReLU())
-        self.add_layer(MaxPool(pool_size=2, stride=2))
+        self.add_layer(MaxPoolVec(pool_size=2, stride=2))
         
         # Second convolutional layer pattern with ReLU activation
         self.add_layer(ConvLayerVec(in_channels=32, out_channels=64, kernel_size=5, padding=2))
         self.add_layer(ReLU())
-        self.add_layer(MaxPool(pool_size=2, stride=2))
+        self.add_layer(MaxPoolVec(pool_size=2, stride=2))
 
         # Flatten layer
         self.add_layer(Flatten())
