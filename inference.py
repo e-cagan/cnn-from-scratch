@@ -13,7 +13,7 @@ from data.load_mnist import load_mnist
 LEARNING_RATE = 0.001
 BATCH_SIZE = 64
 NUM_EPOCHS = 20
-CHECKPOINT_PATH = "checkpoints/best_model.npy"
+CHECKPOINT_PATH = "checkpoints/fully_trained_best_model.npy"
 
 
 def predict_single(model, image):

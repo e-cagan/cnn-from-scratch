@@ -14,7 +14,7 @@ from utils.visualization import plot_training_curves
 LEARNING_RATE = 0.001
 BATCH_SIZE = 64
 NUM_EPOCHS = 20
-CHECKPOINT_PATH = "checkpoints/best_model.npy"
+CHECKPOINT_PATH = "checkpoints/fully_trained_best_model.npy"
 
 # Define a function for evaluation
 def evaluate(model, images, labels, batch_size):
