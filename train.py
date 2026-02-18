@@ -8,6 +8,7 @@ import numpy as np
 from models.cnn import CNNModel
 from optimizers.adam import Adam
 from data.load_mnist import get_batches, load_mnist
+from utils.visualization import plot_training_curves
 
 # CONSTNANTS
 LEARNING_RATE = 0.001
@@ -96,6 +97,9 @@ def train():
     model.load(CHECKPOINT_PATH)
     test_acc = evaluate(model, test_images, test_labels, BATCH_SIZE)
     print(f"Test Accuracy: {test_acc:.4f}")
+
+    # Plot the learning curve
+    plot_training_curves(train_losses, val_accuracies)
 
 # Test the train function
 if __name__ == '__main__':
